@@ -66,8 +66,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Failed to get the product Data',
-      error: error,
+      message: 'Failed to get the product Data by the product id',
     });
   }
 };
