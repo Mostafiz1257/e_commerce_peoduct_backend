@@ -47,11 +47,10 @@ const getAllProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve products',
-      error: error 
+      error: error,
     });
   }
 };
-
 
 //Get a single product by ID
 const getSingleProduct = async (req: Request, res: Response) => {
@@ -80,6 +79,12 @@ const updateProduct = async (req: Request, res: Response) => {
       productId,
       updateData,
     );
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: 'No product found with the provided ID',
+      });
+    }
 
     if (result) {
       res.status(200).json({
