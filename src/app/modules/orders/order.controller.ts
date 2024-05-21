@@ -22,11 +22,13 @@ const createOrder = async (req: Request, res: Response) => {
         message: 'Not enough product quantity in stock',
       });
     }
+
+    //create order into DB
     const result = await OrderServices.createOrderIntoDB(orderZodParse);
     product.inventory.quantity -= orderZodParse.quantity;
     product.inventory.inStock = product.inventory.quantity > 0;
     await product.save();
-    
+
     res.status(200).json({
       success: true,
       message: 'Order created successfully',
