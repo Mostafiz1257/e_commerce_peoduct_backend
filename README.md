@@ -18,4 +18,4 @@
 4."npm run start:dev" for start the server
 4.open the server in http://localhost:3000
 
-The deployment link: 
+The deployment link: https://e-commerce-product-backend-project.vercel.app/
