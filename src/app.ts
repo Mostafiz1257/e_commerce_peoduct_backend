@@ -18,7 +18,7 @@ app.use('/api/orders', OrderRouters)
 
 
 const getAController = (req: Request, res: Response) => {
-  res.send('Hello World!');
+  res.send('E-commerce product backed sice!');
 };
 app.get('/', getAController);
 
