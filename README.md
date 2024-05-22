@@ -10,12 +10,12 @@
 8.Get all order by a specific email.
 9.Handle all error message properly.
  
-If you want to run the application locally follow the instruction:
+#If you want to run the application locally follow the instruction:
 
 1.clone the code from this github
 2.open your cmd and open it in VS code
 3.command : npm install
-4. "npm run start:dev" for start the server
+4."npm run start:dev" for start the server
 4.open the server in http://localhost:3000
 
 The deployment link: 

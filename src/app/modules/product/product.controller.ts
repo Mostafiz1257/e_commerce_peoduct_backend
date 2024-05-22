@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { productService } from './product.service';
 import ProductValidationSchema from './product.validation';
 
+//create a new product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const { product: productData } = req.body;
@@ -27,19 +28,23 @@ const createProduct = async (req: Request, res: Response) => {
 const getAllProduct = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
-    if (!searchTerm) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please enter a valid product name',
-      });
-    }
+
+ 
+    // if (!searchTerm) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: 'Please enter a valid product name',
+    //   });
+    // }
+
+    
     const result = await productService.getAllProductsFromDB(searchTerm);
 
     if (result.length === 0 && searchTerm) {
       res.status(404).json({
         success: false,
         message: 'No products found matching the search term',
-        data: [],
+    
       });
     } else {
       res.status(200).json({
@@ -52,7 +57,7 @@ const getAllProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve products',
-      error: error,
+  
     });
   }
 };
@@ -102,7 +107,6 @@ const updateProduct = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: 'Failed to update data',
-      error: error,
     });
   }
 };

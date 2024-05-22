@@ -19,7 +19,7 @@ const createOrder = async (req: Request, res: Response) => {
     if (product.inventory.quantity < orderZodParse.quantity) {
       return res.status(400).json({
         success: false,
-        message: 'Not enough product quantity in stock',
+        message: 'Insufficient quantity available in inventory',
       });
     }
 
@@ -42,23 +42,31 @@ const createOrder = async (req: Request, res: Response) => {
   }
 };
 
-
 //Get order
 const getAllOrders = async (req: Request, res: Response) => {
   try {
     const email = req.query.email as string;
     const result = await OrderServices.getAllOrderFromDB(email);
 
+    // res.status(200).json({
+    //   success: true,
+    //   message: 'Successfully retrieved data',
+    //   data: result,
+    // });
     res.status(200).json({
-      success: true,
-      message: 'Successfully retrieved data',
-      data: result,
+      success: email ? result.length > 0 : true,
+      message: email
+        ? result.length > 0
+          ? "Orders fetched successfully for user email!"
+          : "Email does not match"
+        : "Orders fetched successfully",
+      data: result.length > 0 ? result : null,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve data',
-      error: error,
     });
   }
 };
