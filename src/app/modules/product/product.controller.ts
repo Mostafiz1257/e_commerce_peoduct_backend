@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { productService } from './product.service';
 import ProductValidationSchema from './product.validation';
+import { TProduct } from './product.interface';
+
 
 //create a new product
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const { product: productData } = req.body;
+    const   productData :TProduct  = req.body;
 
     //zod validation schema
     const zodParseData = ProductValidationSchema.parse(productData);

@@ -1,5 +1,5 @@
 import cors from 'cors';
-import express, { Application, Request, Response, request } from 'express';
+import express, { Application, Request, Response } from 'express';
 import { ProductRoutes } from './app/modules/product/product.route';
 import { OrderRouters } from './app/modules/orders/order.router';
 const app: Application = express();
@@ -18,7 +18,7 @@ app.use('/api/orders', OrderRouters)
 
 
 const getAController = (req: Request, res: Response) => {
-  res.send('E-commerce product backed sice!');
+  res.send('E-commerce product backed side!');
 };
 app.get('/', getAController);
 

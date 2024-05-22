@@ -10,12 +10,14 @@ const createOrder = async (req: Request, res: Response) => {
     const orderData: TOrders = req.body;
     const orderZodParse = OrderValidationSchema.parse(orderData);
     const product = await ProductModel.findById(orderZodParse.productId);
+
     if (!product) {
       return res.status(400).json({
         success: false,
         message: 'No data found with this product id',
       });
     }
+
     if (product.inventory.quantity < orderZodParse.quantity) {
       return res.status(400).json({
         success: false,
