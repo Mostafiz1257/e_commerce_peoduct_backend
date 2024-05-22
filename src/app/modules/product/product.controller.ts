@@ -28,6 +28,12 @@ const createProduct = async (req: Request, res: Response) => {
 const getAllProduct = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
+    if (!searchTerm) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please enter a valid product name',
+      });
+    }
     const result = await productService.getAllProductsFromDB(searchTerm);
 
     if (result.length === 0 && searchTerm) {
