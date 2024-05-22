@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use((req: Request, res: Response, next) => {
-  console.log('Received query parameters:', req.query);
   next();
 });
 //product routes
@@ -22,6 +21,6 @@ const getAController = (req: Request, res: Response) => {
   res.send('Hello World!');
 };
 app.get('/', getAController);
-console.log(process.cwd());
+
 
 export default app;

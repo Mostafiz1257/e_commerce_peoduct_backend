@@ -1,5 +1,5 @@
 
-import mongoose, { Schema, Document, Model, model } from 'mongoose';
+import  { Schema,  model } from 'mongoose';
 import { TInventory, TProduct, TVariant } from './product.interface';
 
 // Define the Mongoose schema for TVariant

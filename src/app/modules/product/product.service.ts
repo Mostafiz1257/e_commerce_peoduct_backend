@@ -35,11 +35,11 @@ const getSingleProductFromDB = async (id: string) => {
 };
 
 //update a product
-const updateProductFromDB = async (id: string, updateData: any) => {
+const updateProductFromDB = async (id: string, updateData: object) => {
   try {
     const result = await ProductModel.findByIdAndUpdate(
       id,
-      { $set: updateData },
+      { $set: updateData  },
       { new: true, runValidators: true },
     );
     return result;
